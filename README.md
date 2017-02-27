@@ -16,6 +16,8 @@ This is a simple app for Urban Dictionary with minimal features.
 - [ ] Trending terms
 - [ ] Submit to App store and/or Google Play store.
 
+
+
 ![Gif of the working app](https://cdn-images-1.medium.com/max/800/1*jmy1yZCLByXi7C9Hh7u0ig.gif)
 #Getting Started
 
