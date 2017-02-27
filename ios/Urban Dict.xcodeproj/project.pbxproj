@@ -494,7 +494,8 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = T8S9AN9VM7;
+						DevelopmentTeam = 33XQUS4CME;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -854,7 +855,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = T8S9AN9VM7;
+				DEVELOPMENT_TEAM = 33XQUS4CME;
 				INFOPLIST_FILE = UrbanDictionary/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -862,8 +863,10 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = uk.co.edwinb.UrbanDictionary;
+				PRODUCT_BUNDLE_IDENTIFIER = uk.co.edwinb.urbandict;
 				PRODUCT_NAME = "Urban Dict";
+				PROVISIONING_PROFILE = "a36a90f5-b482-4001-b154-eed9e79c2182";
+				PROVISIONING_PROFILE_SPECIFIER = "Urban Dictionary Dev";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -872,8 +875,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T8S9AN9VM7;
+				DEVELOPMENT_TEAM = 33XQUS4CME;
 				INFOPLIST_FILE = UrbanDictionary/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -881,8 +885,10 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = uk.co.edwinb.UrbanDictionary;
+				PRODUCT_BUNDLE_IDENTIFIER = uk.co.edwinb.urbandict;
 				PRODUCT_NAME = "Urban Dict";
+				PROVISIONING_PROFILE = "95756f4d-7371-400c-9dd6-d299fa64151d";
+				PROVISIONING_PROFILE_SPECIFIER = "Urban Dictionary Prod";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;

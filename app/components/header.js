@@ -8,12 +8,12 @@ export default class header extends Component {
             <View style={styles.container}> 
                 <TouchableHighlight underlayColor='white' style={{padding:10, backgroundColor:'white', height:40}} onPress={this.props.onMenuPress}>
                     <View style={{flexDirection:'row', alignItems:'center', justifyContent:'center'}}>
-                        <Icon name="menu" color='#2c3e50' size={30}/>
+                        <Icon name="menu" color='#9B9B9B' size={30}/>
                     </View>
                 </TouchableHighlight>  
                 <TouchableHighlight underlayColor='white' style={{padding:10, backgroundColor:'white', height:40}} onPress={this.props.onMenuPress}>
                     <View style={{flexDirection:'row', alignItems:'center', justifyContent:'center'}}>
-                        <Icon name="search" color='#2c3e50' size={30}/>
+                        <Icon name="search" color='#9B9B9B' size={30}/>
                     </View>
                 </TouchableHighlight>  
             </View>
