@@ -17,9 +17,10 @@ This is a simple app for Urban Dictionary with minimal features.
 - [ ] Submit to App store and/or Google Play store.
 
 
-
 ![Gif of the working app](https://cdn-images-1.medium.com/max/800/1*jmy1yZCLByXi7C9Hh7u0ig.gif)
-#Getting Started
+
+
+# Getting Started
 
 - Clone the app
 
@@ -37,7 +38,7 @@ This is a simple app for Urban Dictionary with minimal features.
   
  If you encounter any problem, refer to the [React Native Documentation](https://facebook.github.io/react-native/docs/getting-started.html).
 
-##Prerequisites
+## Prerequisites
 
 To run the project, you will need Node, Watchman, React-Native CLI and Xcode or Android SDK depending on your chosen platform, you can install these using Homebrew
 
@@ -54,32 +55,32 @@ Node comes with npm, you can use Yarn if you prefer or any other package manager
 Get Xcode from the [Mac App Store](https://itunes.apple.com/us/app/xcode/id497799835?mt=12)
 
 
-#Deployment
+# Deployment
 
 TODO:
 
 - [ ] Package the bundle
 
-#Built with
+# Built with
 
 - React Native (Duh!)
 - Sketch (checkout the design file [here](https://github.com/edwinbosire/Urbandict/blob/master/Resources/urbanDictLogo.sketch))
 - Love, lots of love
 
-#Contributing
+# Contributing
 
 Just fork the repo and do your thing.
 
-#Authors
+# Authors
 - [Edwin Bosire](www.twitter.com/edwinbosire) - initial work
 
 - The Internet - Shout out to [StackOverflow](http://stackoverflow.com/questions/tagged/react-native) and the ReactNative [documentation](https://facebook.github.io/react-native/versions.html).
 
-#License
+# License
 
 This project is licensed under the MIT License - see the LICENSE.md file for details
 
-#Acknowledgements
+# Acknowledgements
 - [Urbandictionary](http://www.urbandictionary.com/) for letting me using their API
 
 - [Sam Okoro](https://www.youtube.com/channel/UCu80l5_reHGRLxAmWm9zmYQ) for some awesome React Native prototype apps for inspiration
