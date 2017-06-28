@@ -5,12 +5,15 @@ import Feed from './words'
 import Header from'./header'
 import Search from './search'
 import Menu from './menu'
+import NoConnection from './noInternet'
+
 const {width, height} = Dimensions.get('window')
 
 export default class mainScene extends Component { 
 
     state = {
         modalVisible: false,
+        isNetworkConnected: false
     }
 
     componentDidMount(){
@@ -18,6 +21,7 @@ export default class mainScene extends Component {
             menuIsVisible:false,
         })
     }
+
     setMenuVisible(visible) {
         this.setState({menuIsVisible: visible})
     }
@@ -56,25 +60,9 @@ export default class mainScene extends Component {
             title:'WoTD_2'
         })
     }
-    render() {
-        return (
-            <View style={ styles.container }>  
-                <StatusBar
-                    backgroundColor="white"
-                    barStyle="default"
-                />
-            <Modal 
-                animationType={'fade'}
-                transparent={true}
-                visible={this.state.menuIsVisible}
-            > 
-             <Menu toggleMenu={() => this.setMenuVisible(!this.state.menuIsVisible)}
-                wordOfTheDay={() => this.onMenuWoTDPressed()}
-                onSearch={() => this.onSearchPress()}
-                onFeelingLucky={() => this.onRandomPress()}
-                    />
-            </Modal>
 
+    header(){
+        return(
             <View style={styles.header}> 
                 <TouchableOpacity underlayColor='white' style={{padding:10, backgroundColor:'white', height:40}} onPress={() => this.onMenuPress()}>
                     <View style={{flexDirection:'row', alignItems:'center', justifyContent:'center'}}>
@@ -87,9 +75,19 @@ export default class mainScene extends Component {
                     </View>
                 </TouchableOpacity>  
             </View>
+        );
+    }
+
+    logo() {
+        return(
             <View style={styles.logoContainer}> 
-              <Image style={styles.logo} source={require('../resources/IconLarge.png')} resizeMode='cover'/>
+                <Image style={styles.logo} source={require('../resources/IconLarge.png')} resizeMode='cover'/>
             </View>
+        );
+    }
+
+    buttonGroup(){
+        return(
             <View style={styles.buttonGroups}>
                 <TouchableOpacity  activeOpacity={0.6} underlayColor='rgba(0,0,0,0.001)' style={styles.feelingLucky} onPress={() => this.onRandomPress()}>
                     <View style={{flexDirection:'row', alignItems:'center', justifyContent:'center'}}>
@@ -98,20 +96,29 @@ export default class mainScene extends Component {
                     </View>
                 </TouchableOpacity> 
             </View>
-       {     /*
-            <Text style={styles.latestTitle}> Latest </Text>
-            <Button color='#3498db' title="Yankshake" onPress={() => this.onTrendingPressed('Yankshake')}/>
-            <Button color='#3498db' title="Trumponomics"  onPress={() => this.onTrendingPressed('Trumponomics')}/>
-            <Button color='#3498db' title="Twitter"  onPress={() => this.onTrendingPressed('Twitter')}/>
-            <Button color='#3498db' title="Immigrant"  onPress={() => this.onTrendingPressed('Immigrant')}/>
-            <Button color='#3498db' title="Donald Lump"  onPress={() => this.onTrendingPressed('Donald Lump')}/>
-            <Button color='#3498db' title="Yankee"  onPress={() => this.onTrendingPressed('Yankee')}/>
-            <Button color='#3498db' title="Americano"  onPress={() => this.onTrendingPressed('Americano')}/>
-            <Button color='#3498db' title="Wall"  onPress={() => this.onTrendingPressed('Wall')}/>
-    */}
+        );
+    }
 
+    render() {
+        return (
+            <View style={ styles.container }>  
+                <StatusBar backgroundColor="white" barStyle="default" />
+                <Modal 
+                    animationType={'fade'}
+                    transparent={true}
+                    visible={this.state.menuIsVisible}
+                > 
+                <Menu toggleMenu={() => this.setMenuVisible(!this.state.menuIsVisible)}
+                    wordOfTheDay={() => this.onMenuWoTDPressed()}
+                    onSearch={() => this.onSearchPress()}
+                    onFeelingLucky={() => this.onRandomPress()}
+                        />
+                </Modal>
+                {this.header()}
+                {this.logo()}
+                {this.buttonGroup()}
             </View>
-         );
+        ); 
     }
 }
  
@@ -120,7 +127,6 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection:'column',
     },
-
     header:{
         marginHorizontal:10,
         marginTop:20,
