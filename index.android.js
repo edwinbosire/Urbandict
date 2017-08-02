@@ -9,25 +9,128 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  Navigator,
+  NetInfo
 } from 'react-native';
+import MainScene from './app/components/mainscene/mainScene';
+import WordFeed from './app/components/words/words';
+import Search from './app/components/search/search';
+import NoConnection from './app/components/noInternet';
 
 export default class UrbanDictionary extends Component {
+  state = {
+    isNetworkConnected: false
+  }
+  componentDidMount() {
+    NetInfo.isConnected.addEventListener('change', this.handleConnectionChange);
+    NetInfo.isConnected.fetch().then(isConnected => {
+      { this.setState({ status: isConnected }); }
+    });
+    console.log('component did mount')
+  }
+
+  componentWillUnmount() {
+    NetInfo.isConnected.removeEventListener('change', this.handleConnectionChange);
+  }
+
+  handleConnectionChange = (isConnected) => {
+    this.setState({ isNetworkConnected: isConnected });
+    console.log(`is connected: ${isConnected}`);
+  }
+
   render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
-      </View>
-    );
+    if (this.state.isNetworkConnected === false) {
+      return (<NoConnection />);
+    } else {
+      return (
+        <Navigator
+          initialRoute={{ title: 'Main', index: 0 }}
+          configureScene={(route, routeStack) => {
+            if (route.title === 'Search') {
+              return Navigator.SceneConfigs.FloatFromBottom
+            } else {
+              return Navigator.SceneConfigs.FloatFromRight
+            }
+          }}
+
+          renderScene={(route, navigator) => {
+
+            if (route.title === 'Main') {
+              return (
+                <MainScene navigator={navigator}
+
+                  onPresentSearch={() => {
+                    navigator.push({
+                      title: 'Search'
+                    });
+                  }}
+
+                />);
+            }
+
+            if (route.title === 'WoTD') {
+              return (
+                <WordFeed
+                  title={route.search}
+                  feedURL={'https://api.urbandictionary.com/v0/define?term=' + route.search}
+                  onBack={() => {
+                    navigator.pop()
+                  }}
+                />
+              );
+            }
+            if (route.title === 'WoTD_2') {
+              return (
+                <WordFeed
+                  title={'Words of the Day'}
+                  feedURL={'https://api.urbandictionary.com/v0/words_of_the_day'}
+                  onBack={() => {
+                    navigator.pop()
+                  }}
+                />
+              );
+            }
+
+            if (route.title === 'Random') {
+              return (
+                <WordFeed
+                  title={'Random'}
+                  feedURL={'https://api.urbandictionary.com/v0/random'}
+                  onBack={() => {
+                    navigator.pop()
+                  }}
+                />
+              );
+            }
+            if (route.title === 'Favorites') {
+              return (
+                <WordFeed
+                  title={'Favorites'}
+                  feedURL={'fav'}
+                  onBack={() => {
+                    navigator.pop()
+                  }}
+                />
+              );
+            }
+            if (route.title === 'Search') {
+              return (
+                <Search
+                  navigator={navigator}
+                  title={'Search'}
+                  title={'Random'}
+                  onBack={() => {
+                    navigator.pop()
+                  }}
+                />
+              );
+            }
+          }
+          }
+        />
+      );
+    }
   }
 }
 
