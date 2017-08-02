@@ -13,10 +13,10 @@ import {
   Navigator,
   NetInfo
 } from 'react-native';
-import MainScene from './app/components/mainScene'
-import WordFeed from './app/components/words'
-import Search from './app/components/search'
-import NoConnection from './app/components/noInternet'
+import MainScene from './app/components/mainscene/mainScene';
+import WordFeed from './app/components/words/words';
+import Search from './app/components/search/search';
+import NoConnection from './app/components/noInternet';
 
 export default class UrbanDictionary extends Component {
    state = {
@@ -83,7 +83,7 @@ export default class UrbanDictionary extends Component {
               if(route.title === 'WoTD_2'){
                 return(
                 <WordFeed 
-                  title={'Word of the Day'}
+                  title={'Words of the Day'}
                   feedURL={'https://api.urbandictionary.com/v0/words_of_the_day'}
                   onBack={() => {
                         navigator.pop()
